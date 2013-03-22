@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry excluding="ppl/apps/robotics/gradient/userdefined/|ppl/apps/ml/cf/userdefined/|ppl/apps/ml/lbpdenoise/userdefined/" kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/optiml"/>
+	<classpathentry kind="lib" path="E:/Tool/sbt/.sbt/boot/org.scala-lang.virtualized.scala-2.10.1-RC1/lib/jansi.jar"/>
+	<classpathentry kind="lib" path="E:/Tool/sbt/.sbt/boot/org.scala-lang.virtualized.scala-2.10.1-RC1/lib/jline.jar"/>
+	<classpathentry kind="lib" path="E:/Tool/sbt/.sbt/boot/org.scala-lang.virtualized.scala-2.10.1-RC1/lib/scala-compiler.jar"/>
+	<classpathentry kind="lib" path="E:/Tool/sbt/.sbt/boot/org.scala-lang.virtualized.scala-2.10.1-RC1/lib/scala-library.jar"/>
+	<classpathentry kind="lib" path="E:/Tool/sbt/.sbt/boot/org.scala-lang.virtualized.scala-2.10.1-RC1/lib/scala-reflect.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

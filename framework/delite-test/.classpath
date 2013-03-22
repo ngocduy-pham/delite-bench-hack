@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/delite"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/runtime"/>
+	<classpathentry kind="lib" path="E:/Tool/sbt/.sbt/boot/org.scala-lang.virtualized.scala-2.10.1-RC1/lib/jansi.jar"/>
+	<classpathentry kind="lib" path="E:/Tool/sbt/.sbt/boot/org.scala-lang.virtualized.scala-2.10.1-RC1/lib/jline.jar"/>
+	<classpathentry kind="lib" path="E:/Tool/sbt/.sbt/boot/org.scala-lang.virtualized.scala-2.10.1-RC1/lib/scala-compiler.jar"/>
+	<classpathentry kind="lib" path="E:/Tool/sbt/.sbt/boot/org.scala-lang.virtualized.scala-2.10.1-RC1/lib/scala-library.jar"/>
+	<classpathentry kind="lib" path="E:/Tool/sbt/.sbt/boot/org.scala-lang.virtualized.scala-2.10.1-RC1/lib/scala-reflect.jar"/>
+	<classpathentry kind="lib" path="E:/Tool/sbt/.ivy2/local/EPFL/lms_2.10.1-RC1/0.3-SNAPSHOT/jars/lms_2.10.1-RC1.jar"/>
+	<classpathentry kind="lib" path="E:/Tool/sbt/.ivy2/cache/junit/junit/jars/junit-4.8.1.jar"/>
+	<classpathentry kind="lib" path="E:/Tool/sbt/.ivy2/cache/org.scalatest/scalatest_2.10/jars/scalatest_2.10-2.0.M6-SNAP7.jar"/>
+	<classpathentry kind="lib" path="E:/Tool/sbt/.ivy2/cache/org.apache.commons/commons-math/jars/commons-math-2.2.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
