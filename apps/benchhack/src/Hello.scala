@@ -31,12 +31,6 @@ trait OptiGraphReal extends OptiGraphApplication {
   }
 }
 
-object Hello extends OptiGraphApplicationRunner {
-  def main() {
-    println(Outside.m)
-  }
-}
-
 object Benchmark extends PerformanceTest {
 
   lazy val executor = SeparateJvmsExecutor(
@@ -76,17 +70,13 @@ object Benchmark extends PerformanceTest {
 
   val runs = Gen.single("runs")(1)
 
-  performance of "Unoptimized Delite" in {
+  performance of "Yingyang approach" in {
+
     measure method "Real" in {
       using(runs) in {
-        loop => for (_ <- 1 to loop) Real main Array("true")
+        loop => for (_ <- 1 to loop) CompiledStorage.check("Real", List(Outside.m, Outside.x))
       }
-    }
 
-    measure method "Hello" in {
-      using(runs) in {
-        loop => for (_ <- 1 to loop) Hello main Array("true")
-      }
     }
   }
 

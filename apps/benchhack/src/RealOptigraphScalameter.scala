@@ -47,18 +47,24 @@ object RealOptigraphScalameter extends PerformanceTest {
 
   val runs = Gen.single("runs")(10)
 
-  performance of "RealOptiGraphRunner" in {
-    measure method "optimized" in {
-      using(runs) in {
-        loop => for (_ <- 1 to loop) RealOptiGraphRunner main Array("true")
+  performance of "RealOptiGraphRunner" config (
+    exec.benchRuns -> 3,
+    exec.minWarmupRuns -> 5,
+    exec.maxWarmupRuns -> 10,
+    machine.cores -> 2,
+    exec.independentSamples -> 1
+  ) in {
+      measure method "optimized" in {
+        using(runs) in {
+          loop => RealOptiGraphRunner main Array("true")
+        }
+      }
+      measure method "unoptimized" in {
+        using(runs) in {
+          loop => RealOptiGraphRunner main Array("false")
+        }
       }
     }
-    measure method "unoptimized" in {
-      using(runs) in {
-        loop => for (_ <- 1 to loop) RealOptiGraphRunner main Array("false")
-      }
-    }
-  }
 
 }
 

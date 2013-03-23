@@ -1,8 +1,8 @@
 import ppl.dsl.optigraph._
 
-object RealOptiGraphRunner extends OptiGraphApplicationRunner with RealOptiGraph
+object RealMPDERunner extends OptiGraphApplicationRunner with RealMPDE
 
-trait RealOptiGraph extends OptiGraphApplication {
+trait RealMPDE extends OptiGraphApplication {
 
   def main() {
     val g  = Graph()
