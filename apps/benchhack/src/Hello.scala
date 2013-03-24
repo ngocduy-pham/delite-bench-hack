@@ -31,6 +31,12 @@ trait OptiGraphReal extends OptiGraphApplication {
   }
 }
 
+object Dummy extends ndp.RegexApplicationRunner with ndp.RegexApplication {
+  def main() {
+    matches("abc" + Outside.m, "xyz" + Outside.x)
+  }
+}
+
 object Benchmark extends PerformanceTest {
 
   lazy val executor = SeparateJvmsExecutor(

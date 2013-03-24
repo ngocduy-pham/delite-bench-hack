@@ -18,7 +18,13 @@ object OptigraphUnoptimizedSpitter extends Spitter {
      performance of "Unoptimized Delite" in {
      ${
     toBench map (sample => s"""
-        measure method "$sample" in {
+        measure method "$sample" config (
+          exec.benchRuns -> 3,
+          exec.minWarmupRuns -> 5,
+          exec.maxWarmupRuns -> 10,
+          machine.cores -> 2,
+          exec.independentSamples -> 1
+        ) in {
           using(runs) in {
             loop => for (_ <- 1 to loop) $sample main Array("false")
           }
