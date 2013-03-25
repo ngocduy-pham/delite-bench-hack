@@ -108,7 +108,8 @@ object DeliteBuild extends Build {
   lazy val opticvxApps = Project("opticvx-apps", file("apps/opticvx"), settings = virtBuildSettings) dependsOn(opticvx)
   lazy val interopApps = Project("interop-apps", file("apps/multi-dsl"), settings = virtBuildSettings) dependsOn(optiml, optiql) // dependsOn(dsls) not working
 
-  lazy val benchhack = Project("bench-hack", file("apps/benchhack"), settings = virtBuildSettings) dependsOn(optigraph)
+  lazy val benchhack = Project("bench-hack", file("apps/benchhack"), settings = virtBuildSettings) dependsOn(optigraph, regex)
+  lazy val regex = Project("regex", file("dsls/regex"), settings = virtBuildSettings) dependsOn(framework)
 
   lazy val runtime = Project("runtime", file("runtime"), settings = virtBuildSettings)
 
