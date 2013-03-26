@@ -17,10 +17,11 @@ import ops.DeliteOpsExp
 import transform.DeliteTransform
 import scala.virtualization.lms.internal._
 
-trait DeliteApplication extends DeliteOpsExp with ScalaCompile with DeliteTransform {
+trait DeliteApplication extends DeliteOpsExp with ScalaCompile with DeliteTransform with Expressions {
   type DeliteApplicationTarget = Target { val IR: DeliteApplication.this.type }
 
   private val optimized = false
+  
 
   /*
    * code generators
@@ -118,12 +119,14 @@ trait DeliteApplication extends DeliteOpsExp with ScalaCompile with DeliteTransf
       case Sym(_)      => Nil
       case _           => Nil
     }
-
+  
+  var previous: scala.collection.mutable.ArrayBuffer[Any] = _
   protected def collectInFatDef(fd: FatDef): scala.List[Const[Any]] = Nil
 
-  private var constBuff: List[Any] = null
+  // private var constBuff: List[Any] = null
 
   final def main(args: Array[String]) {
+    super.reset
     val startPoint = System.currentTimeMillis()
     //println("Delite Application Being Staged:[" + this.getClass.getName + "]")
 
@@ -137,8 +140,8 @@ trait DeliteApplication extends DeliteOpsExp with ScalaCompile with DeliteTransf
     val optimized = args.head == "true"
     if (optimized) {
       val s = fresh[Array[String]]
-      val body = deliteGenerator.reifyBlock(liftedMain(s))
-      val block = deliteGenerator.runTransformations(body)
+      val block = deliteGenerator.reifyBlock(liftedMain(s))
+      // val block = deliteGenerator.runTransformations(body) we do not need this
       /*deliteGenerator.focusBlock(block) {
         deliteGenerator.focusExactScope(block) { levelScope =>
           levelScope foreach (stm => {
@@ -146,22 +149,22 @@ trait DeliteApplication extends DeliteOpsExp with ScalaCompile with DeliteTransf
           })
         }
       }*/
-      val current = collectInBlock(block) /* foreach println*/
-      if (constBuff == null) {
-        println("initialized")
-        constBuff = current
+      // val current = collectInBlock(block) /* foreach println*/
+      val current = constBuff
+      if (previous == null) {
+        println("initialized")                        
+        previous = new scala.collection.mutable.ArrayBuffer[Any]() ++ current
       }
-      else if (constBuff.length != current.length) {
-        println("different length")
-        constBuff = current
-      }
-      else if ((constBuff.length != current.length) || ((constBuff zip current) exists { case (pre, cur) => pre != cur })) {
+      else if ((current zip constBuff) exists { case (pre, cur) => pre != cur }) {
         println("changed")
-        constBuff = current
+        previous.clear()
+        previous ++= current    
       }
       else {
         println("not re-stage")
       }
+
+
     }
     else {
       val stream = new PrintWriter(new FileWriter(Config.degFilename))
@@ -244,12 +247,13 @@ trait DeliteApplication extends DeliteOpsExp with ScalaCompile with DeliteTransf
       import ppl.delite.runtime.Config
 
       //load task graph
-      val graph = Delite loadDeliteDEG degFile.getCanonicalPath()
+      // val graph = Delite loadDeliteDEG degFile.getCanonicalPath()
       //val graph = new TestGraph
-      Config.deliteBuildHome = graph.kernelPath
+      // Config.deliteBuildHome = graph.kernelPath
       //load kernels & data structures
-      Delite loadSources graph
+      // Delite loadSources graph
       //Delite main scala.Array(degFile.getCanonicalPath())
+      ()
     }
     System.out.println(s"All run in ${(System.currentTimeMillis() - startPoint) / 1000d}s")
   }

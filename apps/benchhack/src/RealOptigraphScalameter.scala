@@ -13,7 +13,7 @@ import ppl.dsl.optigraph._
 
 object RealOptigraphScalameter extends PerformanceTest {
 
-  lazy val executor = SeparateJvmsExecutor(
+  lazy val executor = LocalExecutor(
     Executor.Warmer.Default(),
     Aggregator.average,
     new Measurer.Default with Measurer.OutlierElimination)
@@ -21,7 +21,7 @@ object RealOptigraphScalameter extends PerformanceTest {
   lazy val reporter = new Reporter {
 
     def report(result: CurveData, persistor: Persistor) {
-      val stream = new PrintWriter(new BufferedWriter(new FileWriter(raw"D:\enjoy\Delite\realOptigraphBenchmark.benchmark", true)))
+      val stream = new PrintWriter(new BufferedWriter(new FileWriter(raw"/home/vjovanov/realOptigraphBenchmark.benchmark", true)))
       // output context
       println(s"::Benchmark ${result.context.scope}::")
       //stream.println(s"::Benchmark ${result.context.scope}::")
