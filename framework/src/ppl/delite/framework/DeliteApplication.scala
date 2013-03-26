@@ -21,7 +21,6 @@ trait DeliteApplication extends DeliteOpsExp with ScalaCompile with DeliteTransf
   type DeliteApplicationTarget = Target { val IR: DeliteApplication.this.type }
 
   private val optimized = false
-  
 
   /*
    * code generators
@@ -119,7 +118,7 @@ trait DeliteApplication extends DeliteOpsExp with ScalaCompile with DeliteTransf
       case Sym(_)      => Nil
       case _           => Nil
     }
-  
+
   var previous: scala.collection.mutable.ArrayBuffer[Any] = _
   protected def collectInFatDef(fd: FatDef): scala.List[Const[Any]] = Nil
 
@@ -127,7 +126,7 @@ trait DeliteApplication extends DeliteOpsExp with ScalaCompile with DeliteTransf
 
   final def main(args: Array[String]) {
     super.reset
-    val startPoint = System.currentTimeMillis()
+    //val startPoint = System.currentTimeMillis()
     //println("Delite Application Being Staged:[" + this.getClass.getName + "]")
 
     //println("******Generating the program******")
@@ -152,18 +151,17 @@ trait DeliteApplication extends DeliteOpsExp with ScalaCompile with DeliteTransf
       // val current = collectInBlock(block) /* foreach println*/
       val current = constBuff
       if (previous == null) {
-        println("initialized")                        
+        println("init")
         previous = new scala.collection.mutable.ArrayBuffer[Any]() ++ current
       }
-      else if ((current zip constBuff) exists { case (pre, cur) => pre != cur }) {
-        println("changed")
+      else if (current != constBuff) {
+        println("recompile")
         previous.clear()
-        previous ++= current    
+        previous ++= current
       }
       else {
-        println("not re-stage")
+        println("retrieve")
       }
-
 
     }
     else {
@@ -243,19 +241,17 @@ trait DeliteApplication extends DeliteOpsExp with ScalaCompile with DeliteTransf
 
       // System.out.println("Compile and execute generated code")
 
-      import ppl.delite.runtime.Delite
-      import ppl.delite.runtime.Config
+      import ppl.delite.runtime.{ Delite, Config }
 
       //load task graph
-      // val graph = Delite loadDeliteDEG degFile.getCanonicalPath()
+      val graph = Delite loadDeliteDEG degFile.getCanonicalPath()
       //val graph = new TestGraph
-      // Config.deliteBuildHome = graph.kernelPath
+      Config.deliteBuildHome = graph.kernelPath
       //load kernels & data structures
-      // Delite loadSources graph
+      Delite loadSources graph
       //Delite main scala.Array(degFile.getCanonicalPath())
-      ()
     }
-    System.out.println(s"All run in ${(System.currentTimeMillis() - startPoint) / 1000d}s")
+    //System.out.println(s"All run in ${(System.currentTimeMillis() - startPoint) / 1000d}s")
   }
 
   final def generateScalaSource(name: String, stream: PrintWriter) = {

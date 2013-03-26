@@ -1,5 +1,3 @@
-
-
 import java.io.{ FileWriter, File, PrintWriter, BufferedWriter }
 
 import org.scalameter.api._
@@ -21,7 +19,7 @@ object RealOptigraphScalameter extends PerformanceTest {
   lazy val reporter = new Reporter {
 
     def report(result: CurveData, persistor: Persistor) {
-      val stream = new PrintWriter(new BufferedWriter(new FileWriter(raw"/home/vjovanov/realOptigraphBenchmark.benchmark", true)))
+      val stream = new PrintWriter(new BufferedWriter(new FileWriter(raw"./realOptigraphBenchmark.benchmark", true)))
       // output context
       println(s"::Benchmark ${result.context.scope}::")
       //stream.println(s"::Benchmark ${result.context.scope}::")

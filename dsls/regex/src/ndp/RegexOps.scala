@@ -27,8 +27,8 @@ trait ScalaGenRegexOps extends ScalaGenStringOps {
     case _                   => super.emitNode(sym, rhs)
   }
 
-  override def emitFileHeader(): Unit = {
+  /*override def emitFileHeader(): Unit = {
     stream.println("import scala.util.matching.Regex")
-  }
+  }*/
 
 }

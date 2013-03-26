@@ -2,7 +2,7 @@ import sbt._
 import Keys._
 
 object DeliteBuild extends Build {
-  val virtualization_lms_core =  "EPFL" % "lms_2.10.1-RC1" % "0.3-SNAPSHOT"
+  val virtualization_lms_core =  "EPFL" % "lms_2.10" % "0.3-SNAPSHOT"
 
   // -DshowSuppressedErrors=false
   System.setProperty("showSuppressedErrors", "false")
@@ -97,7 +97,7 @@ object DeliteBuild extends Build {
   lazy val optiml = Project("optiml", file("dsls/optiml"), settings = virtBuildSettings) dependsOn(optila, deliteTest)
   lazy val optiql = Project("optiql", file("dsls/optiql"), settings = virtBuildSettings) dependsOn(framework, deliteTest)
   lazy val optimesh = Project("optimesh", file("dsls/deliszt"), settings = virtBuildSettings) dependsOn(framework, deliteTest)
-  lazy val optigraph = Project("optigraph", file("dsls/optigraph"), settings = virtBuildSettings) dependsOn(framework, deliteTest)
+  lazy val optigraph = Project("optigraph", file("dsls/optigraph"), settings = virtBuildSettings) dependsOn(framework)
   lazy val opticvx = Project("opticvx", file("dsls/opticvx"), settings = virtBuildSettings) dependsOn(framework, deliteTest)
 
   lazy val apps = Project("apps", file("apps"), settings = virtBuildSettings) aggregate(optimlApps, optiqlApps, optimeshApps, optigraphApps, opticvxApps, interopApps)
@@ -109,6 +109,7 @@ object DeliteBuild extends Build {
   lazy val interopApps = Project("interop-apps", file("apps/multi-dsl"), settings = virtBuildSettings) dependsOn(optiml, optiql) // dependsOn(dsls) not working
 
   lazy val benchhack = Project("bench-hack", file("apps/benchhack"), settings = virtBuildSettings) dependsOn(optigraph, regex)
+  lazy val benchrun = Project("bench-run", file("apps/benchrun"), settings = virtBuildSettings) dependsOn(benchhack)
   lazy val regex = Project("regex", file("dsls/regex"), settings = virtBuildSettings) dependsOn(framework)
 
   lazy val runtime = Project("runtime", file("runtime"), settings = virtBuildSettings)

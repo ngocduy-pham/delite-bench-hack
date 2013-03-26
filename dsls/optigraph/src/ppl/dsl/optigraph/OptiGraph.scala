@@ -29,7 +29,7 @@ trait OptiGraphApplicationRunner extends OptiGraphApplication with OptiGraphExp 
     df match {
       case Print(x)                   => collectInExp(x)
       case PrintLn(x)                 => collectInExp(x)
-      case PrintF(_, ls)              => ls flatMap collectInExp
+      //case PrintF(_, ls)              => ls flatMap collectInExp
       case Exit(x)                    => collectInExp(x)
       case Error(x)                   => collectInExp(x)
       case Return(x)                  => collectInExp(x)

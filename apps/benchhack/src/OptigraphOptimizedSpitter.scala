@@ -2,7 +2,7 @@ object OptigraphOptimizedSpitter extends Spitter {
 
   val scalameterName: String = "optigraphOptimizedScalameter"
 
-  override val benchmarkOut = "raw\"D:\\enjoy\\Delite\\optigraphOptimizedBenchmark.benchmark\""
+  override val benchmarkOut = raw"./optigraphOptimizedBenchmark.benchmark"
 
   def name(id: Int): String = s"optigraphOptimizedBench$id"
 

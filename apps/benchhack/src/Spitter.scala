@@ -10,7 +10,7 @@ trait Spitter {
     }
   """*/
   val freeContainer = "FreeValueContainer"
-  val benchhack = raw"D:\enjoy\Delite\apps\benchhack\src\generated\"
+  val benchhack = raw"./apps/benchhack/src/generated/"
   val scalameterName: String
 
   def name(id: Int): String
