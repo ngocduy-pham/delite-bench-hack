@@ -1,17 +1,10 @@
 import java.io.{ File => JFile }
 
 trait Spitter {
+  import Constant._
 
-  /*def valobjName(id: Int): String
-  def valobj(name: String): String = s"""
-    object $name {
-      val x = 1
-      val s = "stupid string"
-    }
-  """*/
-  val freeContainer = "FreeValueContainer"
-  val benchhack = raw"./apps/benchhack/src/generated/"
   val scalameterName: String
+  val approach: String
 
   def name(id: Int): String
   def startFile(id: Int): String
@@ -22,8 +15,8 @@ trait Spitter {
   """
 
   def measuring(toBench: List[String]): String
-  
-  val benchmarkOut = "raw\"D:\\enjoy\\Delite\\optiGraphBenchmark.benchmark\\\""
+
+  val benchmarkOut: String
 
   def scalameter(measuring: String): String = s"""
     import java.io.{ FileWriter, File, PrintWriter, BufferedWriter }
@@ -47,7 +40,7 @@ trait Spitter {
       lazy val reporter = new Reporter {
 
         def report(result: CurveData, persistor: Persistor) {
-          val stream = new PrintWriter(new BufferedWriter(new FileWriter($benchmarkOut, true)))
+          val stream = new PrintWriter(new BufferedWriter(new FileWriter("$benchmarkOut", true)))
           // output context
           println(s"::Benchmark $${result.context.scope}::")
           //stream.println(s"::Benchmark $${result.context.scope}::")
@@ -71,26 +64,35 @@ trait Spitter {
 
       lazy val persistor = Persistor.None
 
-      val runs = Gen.single("runs")(10)
+      val runs = Gen.single("runs")(1)
 
-      ${measuring}
+      var previous: scala.collection.mutable.ArrayBuffer[Any] = null
+
+      performance of "$approach" config (
+        exec.benchRuns -> 3,
+        exec.minWarmupRuns -> 5,
+        exec.maxWarmupRuns -> 10,
+        machine.cores -> 2,
+        exec.independentSamples -> 1
+      ) in {
+        ${measuring}
+      }
 
     }
 
   """
 
-  def main(args: Array[String]): Unit = {
-    val benchmarks = spit()
+  def emitScalameter(benchmarks: List[String]) {
     val benchmarker = scalameter(measuring(benchmarks))
-    val fileName = s"$benchhack$scalameterName.scala"
+    val fileName = s"$generated$scalameterName.scala"
     val file = Utils createFile fileName
     Utils.write(fileName, benchmarker, true)
   }
 
   def spit(): List[String] = {
-    (for (i <- 1 to 20) yield {
+    (for (i <- 50 to 100 by 50) yield {
       val objName = name(i)
-      val fileName = s"$benchhack$objName.scala"
+      val fileName = s"$generated$objName.scala"
       val file = Utils createFile fileName
       Utils.write(fileName, startFile(i), true)
       Utils.write(fileName, (for (j <- 1 to i) yield interval(j)) mkString "")

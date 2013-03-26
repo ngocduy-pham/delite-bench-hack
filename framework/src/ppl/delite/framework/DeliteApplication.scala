@@ -139,7 +139,7 @@ trait DeliteApplication extends DeliteOpsExp with ScalaCompile with DeliteTransf
     val optimized = args.head == "true"
     if (optimized) {
       val s = fresh[Array[String]]
-      val block = deliteGenerator.reifyBlock(liftedMain(s))
+      //val block = deliteGenerator.reifyBlock(liftedMain(s))
       // val block = deliteGenerator.runTransformations(body) we do not need this
       /*deliteGenerator.focusBlock(block) {
         deliteGenerator.focusExactScope(block) { levelScope =>
@@ -149,7 +149,7 @@ trait DeliteApplication extends DeliteOpsExp with ScalaCompile with DeliteTransf
         }
       }*/
       // val current = collectInBlock(block) /* foreach println*/
-      val current = constBuff
+      /*val current = constBuff
       if (previous == null) {
         println("init")
         previous = new scala.collection.mutable.ArrayBuffer[Any]() ++ current
@@ -161,7 +161,7 @@ trait DeliteApplication extends DeliteOpsExp with ScalaCompile with DeliteTransf
       }
       else {
         println("retrieve")
-      }
+      }*/
 
     }
     else {
@@ -234,12 +234,6 @@ trait DeliteApplication extends DeliteOpsExp with ScalaCompile with DeliteTransf
       staticDataMap = Map() ++ sd map { case (s, d) => (deliteGenerator.quote(s), d) }
 
       val degFile = new File(Config.degFilename)
-
-      /*print("static data: ")
-      staticDataMap foreach println
-      println("")*/
-
-      // System.out.println("Compile and execute generated code")
 
       import ppl.delite.runtime.{ Delite, Config }
 

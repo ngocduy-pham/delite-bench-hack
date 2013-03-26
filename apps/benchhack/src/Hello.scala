@@ -13,7 +13,7 @@ object Outside {
   val x = 0
   val m = "hello"
 }
-
+/*
 object Real extends OptiGraphApplicationRunner with OptiGraphReal
 
 trait OptiGraphReal extends OptiGraphApplication {
@@ -80,10 +80,11 @@ object Benchmark extends PerformanceTest {
 
     measure method "Real" in {
       using(runs) in {
-        loop => for (_ <- 1 to loop) CompiledStorage.check("Real", List(Outside.m, Outside.x))
+        loop => ()//for (_ <- 1 to loop) CompiledStorage.check("Real", List(Outside.m, Outside.x))
       }
 
     }
   }
 
 }
+*/

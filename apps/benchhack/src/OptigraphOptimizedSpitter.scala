@@ -1,14 +1,15 @@
-object OptigraphOptimizedSpitter extends Spitter {
+class OptigraphOptimizedSpitter extends Spitter {
+  import Constant._
 
-  val scalameterName: String = "optigraphOptimizedScalameter"
+  val scalameterName = scalameterDeliteLocOptimized
+  val benchmarkOut = outDeliteLocOptimized
+  val approach = "Delite_optimized"
 
-  override val benchmarkOut = raw"./optigraphOptimizedBenchmark.benchmark"
-
-  def name(id: Int): String = s"optigraphOptimizedBench$id"
+  def name(id: Int): String = s"$benchDeliteLOC${id}0"
 
   def startFile(id: Int): String = s"""
     import ppl.dsl.optigraph._
-    object ${name(id)} extends OptiGraphApplicationRunner {
+    class ${name(id)} extends OptiGraphApplicationRunner {
       def main() = {
   """
 
@@ -28,25 +29,28 @@ object OptigraphOptimizedSpitter extends Spitter {
   """
   }
 
-  def measuring(toBench: List[String]): String = s"""
-     performance of "Optimized Delite" in {
-     ${
+  def measuring(toBench: List[String]): String =
     toBench map (sample => s"""
-        measure method "$sample" config (
-          exec.benchRuns -> 3,
-          exec.minWarmupRuns -> 5,
-          exec.maxWarmupRuns -> 10,
-          machine.cores -> 2,
-          exec.independentSamples -> 1
-        ) in {
-          using(runs) in {
-            loop => for (_ <- 1 to loop) $sample main Array("true")
+      measure method "$sample" in {
+        using(runs) in {
+          loop => for (_ <- 1 to loop) {
+            val delite = new $sample()
+            delite main Array("true")
+            val current = delite.constBuff
+            if (previous == null) {
+              println("init")
+              previous = new scala.collection.mutable.ArrayBuffer[Any]() ++ current
+            }
+            else if (current != previous) {
+              println("recompile")
+              previous.clear()
+              previous ++= current
+            }
+            else {
+              println("retrieve :)")
+            }
           }
-        }         
-     """) mkString ""
-  }
-      
-      }
-    """
+        }
+      }""") mkString ""
 
 }

@@ -1,13 +1,11 @@
-import java.io.{ FileWriter, File, PrintWriter, BufferedWriter }
-
+import java.io.{ FileWriter, PrintWriter, BufferedWriter }
 import org.scalameter.api._
 import org.scalameter.CurveData
 import org.scalameter.Context
-import org.scalameter.Log
 import org.scalameter.Executor.Measurer
 import org.scalameter.utils.Tree
 
-object RealMPDEScalameter extends PerformanceTest {
+object scalameter_deliteLOC_unoptimized extends PerformanceTest {
 
   lazy val executor = SeparateJvmsExecutor(
     Executor.Warmer.Default(),
@@ -17,7 +15,7 @@ object RealMPDEScalameter extends PerformanceTest {
   lazy val reporter = new Reporter {
 
     def report(result: CurveData, persistor: Persistor) {
-      val stream = new PrintWriter(new BufferedWriter(new FileWriter(raw"./realMPDEBenchmark.benchmark/", true)))
+      val stream = new PrintWriter(new BufferedWriter(new FileWriter("delite_LOC_unoptimized.benchmark", true)))
       // output context
       println(s"::Benchmark ${result.context.scope}::")
       //stream.println(s"::Benchmark ${result.context.scope}::")
@@ -43,34 +41,36 @@ object RealMPDEScalameter extends PerformanceTest {
 
   val runs = Gen.single("runs")(1)
 
-  performance of "Yinyang approach" config (
-    exec.benchRuns -> 10,
-    exec.minWarmupRuns -> 10,
-    //exec.maxWarmupRuns -> 10,
+  var previous: scala.collection.mutable.ArrayBuffer[Any] = null
+
+  performance of "Delite_unoptimized" config (
+    exec.benchRuns -> 3,
+    exec.minWarmupRuns -> 5,
+    exec.maxWarmupRuns -> 10,
     machine.cores -> 2,
     exec.independentSamples -> 1
   ) in {
 
-      val dummy: () => Any = () => ()
-      measure method "Real MPDE new" in {
-        using(runs) in {
-          loop => for (_ <- 1 to loop) YYStorage.checkRef[Any](1, Seq(FreeValueContainer.s1, FreeValueContainer.x1), Seq(), dummy)
-        }
-      }
-
-      val text = "I" * 5000
-      val pattern = "I*"
-      measure method "Real MPDE new" in {
+      measure method "bench_delite_LOC500" in {
         using(runs) in {
           loop =>
             for (_ <- 1 to loop) {
-              val s = text.map(x => (x + 1).toChar)
-              if (s.matches(pattern)) println("Success!")
+              val delite = new bench_delite_LOC500()
+              delite main Array("false")
             }
         }
       }
-
+      measure method "bench_delite_LOC1000" in {
+        using(runs) in {
+          loop =>
+            for (_ <- 1 to loop) {
+              val delite = new bench_delite_LOC1000()
+              delite main Array("false")
+            }
+        }
+      }
     }
 
 }
+
   

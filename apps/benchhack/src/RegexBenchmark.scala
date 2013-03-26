@@ -20,7 +20,7 @@ object Input {
   var s = ""
 }
 
-object Regexer extends ndp.RegexApplicationRunner with ndp.RegexApplication {
+/*object Regexer extends ndp.RegexApplicationRunner with ndp.RegexApplication {
   def main() {
     matches(Input.s, "pattern")
   }
@@ -85,4 +85,4 @@ object RegexBenchmark extends PerformanceTest {
       }
     }
 
-}
+}*/
