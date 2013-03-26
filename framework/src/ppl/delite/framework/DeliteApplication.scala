@@ -139,7 +139,7 @@ trait DeliteApplication extends DeliteOpsExp with ScalaCompile with DeliteTransf
     val optimized = args.head == "true"
     if (optimized) {
       val s = fresh[Array[String]]
-      //val block = deliteGenerator.reifyBlock(liftedMain(s))
+      val block = deliteGenerator.reifyBlock(liftedMain(s))
       // val block = deliteGenerator.runTransformations(body) we do not need this
       /*deliteGenerator.focusBlock(block) {
         deliteGenerator.focusExactScope(block) { levelScope =>

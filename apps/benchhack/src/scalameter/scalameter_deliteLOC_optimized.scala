@@ -68,6 +68,7 @@ object scalameter_deliteLOC_optimized extends PerformanceTest {
                 previous ++= current
               }
               else {
+                println(s"***** ${current.size}")
                 println("retrieve :)")
               }
             }
