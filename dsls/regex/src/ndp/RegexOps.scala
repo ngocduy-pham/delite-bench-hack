@@ -7,15 +7,17 @@ import scala.virtualization.lms.common.ScalaGenStringOps
 import scala.virtualization.lms.common.StringOpsExp
 
 trait RegexOps extends Base {
-  def matches(s: Rep[String], pattern: Rep[String])(implicit pos: SourceContext): Rep[Boolean]
+  def matches(s: Rep[String], pattern: Rep[String])(implicit pos: SourceContext): Boolean
 }
 
 trait RegexOpsExp extends StringOpsExp with EffectExp {
 
   case class Matches(s: Exp[String], pattern: Exp[String]) extends Def[Boolean]
 
-  def matches(s: Exp[String], pattern: Exp[String])(implicit pos: SourceContext): Exp[Boolean] =
+  def matches(s: Exp[String], pattern: Exp[String])(implicit pos: SourceContext): Boolean = {
     reflectEffect(Matches(s, pattern))
+    true
+  }
 }
 
 trait ScalaGenRegexOps extends ScalaGenStringOps {

@@ -17,7 +17,7 @@ import ops.DeliteOpsExp
 import transform.DeliteTransform
 import scala.virtualization.lms.internal._
 
-trait DeliteApplication extends DeliteOpsExp with ScalaCompile with DeliteTransform with Expressions {
+trait DeliteApplication extends DeliteOpsExp with ScalaCompile with DeliteTransform {
   type DeliteApplicationTarget = Target { val IR: DeliteApplication.this.type }
 
   private val optimized = false

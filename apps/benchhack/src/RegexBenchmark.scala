@@ -18,15 +18,18 @@ import org.scalameter.Context
 
 object Input {
   var s = ""
+  val elem = "i"
+  val pattern = "i*"
 }
 
-/*object Regexer extends ndp.RegexApplicationRunner with ndp.RegexApplication {
+class Regexer extends ndp.RegexApplicationRunner with ndp.RegexApplication/* with scala.virtualization.lms.common.IfThenElseFatExp*/ {
   def main() {
-    matches(Input.s, "pattern")
+    if (matches(Input.s, Input.pattern)) println("Success!")
   }
 }
 
 object RegexBenchmark extends PerformanceTest {
+  import Constant._
 
   lazy val executor = SeparateJvmsExecutor(
     Executor.Warmer.Default(),
@@ -36,7 +39,7 @@ object RegexBenchmark extends PerformanceTest {
   lazy val reporter = new Reporter {
 
     def report(result: CurveData, persistor: Persistor) {
-      val stream = new PrintWriter(new BufferedWriter(new FileWriter(raw"D:/enjoy/Delite/regex.benchmark", true)))
+      val stream = new PrintWriter(new BufferedWriter(new FileWriter(outRegexDelite, true)))
       // output context
       println(s"::Benchmark ${result.context.scope}::")
       //stream.println(s"::Benchmark ${result.context.scope}::")
@@ -64,6 +67,8 @@ object RegexBenchmark extends PerformanceTest {
 
   val runs = Gen.single("runs")(1)
 
+  var previous: scala.collection.mutable.ArrayBuffer[Any] = null
+
   performance of "Delite" config (
     exec.benchRuns -> 3,
     exec.minWarmupRuns -> 5,
@@ -71,13 +76,37 @@ object RegexBenchmark extends PerformanceTest {
     machine.cores -> 2,
     exec.independentSamples -> 1) in {
 
-      for (mult ← 1 to 4000 by 200) {
+      for (mult <- 520 to 1000 by 20) {
+
         measure method "regex" in {
-          using(runs) setUp (_ => Input.s = "input" * mult * mult) in {
+          using(runs) setUp (_ => { Input.s = Input.elem * mult * mult; println(s"String length: ${Input.s.length()}") }) in {
+            loop =>
+              for (_ <- 1 to loop) {
+                val delite = new Regexer
+                delite main Array("true")
+                val current = delite.constBuff
+                if (previous == null) {
+                  previous = new scala.collection.mutable.ArrayBuffer[Any]() ++ current
+                }
+                else if (current != previous) {
+                  //println(":(")
+                  previous.clear()
+                  previous ++= current
+                }
+                else {
+                  /*println(s"***** ${current.size}")
+                  println(":)")*/
+                }
+              }
+          }
+        }
+
+        measure method "run rightaway" in {
+          using(runs) setUp (_ => Input.s = Input.elem * mult * mult) in {
             loop ⇒
-              for (_ ← 1 to loop) {
-                //println("********** " + Input.s)
-                Regexer main Array("false")
+              for (_ <- 1 to loop) {
+                val ok = Input.s matches Input.pattern
+                if (ok) println()
               }
           }
         }
@@ -85,4 +114,4 @@ object RegexBenchmark extends PerformanceTest {
       }
     }
 
-}*/
+}

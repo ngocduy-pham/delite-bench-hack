@@ -6,6 +6,8 @@ object Constant {
   val outDeliteLocUnoptimized = "delite_LOC_unoptimized.benchmark"
   val outYYLoc = "yinyang_LOC.benchmark"
   val outRealLife = "real_life_apps.benchmark"
+  val out5Nodes = "5_nodes.benchmark"
+  val outRegexDelite = "delite_regex.benchmark"
 
   val scalameterDeliteLocOptimized = "scalameter_deliteLOC_optimized"
   val scalameterDeliteLocUnoptimized = "scalameter_deliteLOC_unoptimized"
