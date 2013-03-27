@@ -1,9 +1,14 @@
 object YYSpitter extends Spitter {
   import Constant._
 
-  val benchmarkOut = outYYLoc
   val scalameterName = scalameterYYLoc
   val approach = "YinYang"
+  val outputFile = outYYLoc
+  val outputFormat = s"""
+  output format for LOC benchmark, YinYang in $outputFile:
+  - 500LOC benchmark
+  - 1000LOC benchmark
+  """
 
   def name(id: Int): String = s"mpdeBench$id"
   def startFile(id: Int): String = ""

@@ -2,8 +2,13 @@ object DeliteSpitter extends Spitter {
   import Constant._
 
   val scalameterName = scalameterDeliteLocUnoptimized
-  val benchmarkOut = outDeliteLocUnoptimized
+  val outputFile = outDeliteLocUnoptimized
   val approach = "Delite_unoptimized"
+  val outputFormat = s"""
+  output format for LOC benchmark, delite-unoptimized in $outputFile:
+  - 500LOC benchmark
+  - 1000LOC benchmark
+  """
 
   def name(id: Int): String = ""
   def startFile(id: Int): String = ""

@@ -5,5 +5,6 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/optigraph"/>
 	<classpathentry kind="lib" path="E:/Tool/sbt/.ivy2/cache/com.github.axel22/scalameter_2.10/jars/scalameter_2.10-0.3.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/regex"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

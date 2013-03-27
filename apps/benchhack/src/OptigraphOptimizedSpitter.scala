@@ -2,8 +2,13 @@ class OptigraphOptimizedSpitter extends Spitter {
   import Constant._
 
   val scalameterName = scalameterDeliteLocOptimized
-  val benchmarkOut = outDeliteLocOptimized
+  val outputFile = outDeliteLocOptimized
   val approach = "Delite_optimized"
+  val outputFormat = s"""
+  output format for LOC benchmark, delite-optimized in $outputFile:
+  - 500LOC benchmark
+  - 1000LOC benchmark
+  """
 
   def name(id: Int): String = s"$benchDeliteLOC${id}0"
 
@@ -38,16 +43,16 @@ class OptigraphOptimizedSpitter extends Spitter {
             delite main Array("true")
             val current = delite.constBuff
             if (previous == null) {
-              println("init")
+              // println("init")
               previous = new scala.collection.mutable.ArrayBuffer[Any]() ++ current
             }
             else if (current != previous) {
-              println("recompile")
+              // println("recompile")
               previous.clear()
               previous ++= current
             }
             else {
-              println("retrieve :)")
+              // println("retrieve :)")
             }
           }
         }

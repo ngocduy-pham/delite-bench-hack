@@ -1,46 +1,15 @@
-import java.io.{ FileWriter, PrintWriter, BufferedWriter }
-import org.scalameter.api._
-import org.scalameter.CurveData
-import org.scalameter.Context
-import org.scalameter.Executor.Measurer
-import org.scalameter.utils.Tree
+import org.scalameter.api.exec
+import org.scalameter.api.machine
 
-object scalameter_5nodes extends PerformanceTest {
-  import Constant._
+object scalameter_5nodes extends Scalameter {
 
-  lazy val executor = SeparateJvmsExecutor(
-    Executor.Warmer.Default(),
-    Aggregator.average,
-    new Measurer.Default with Measurer.OutlierElimination)
-
-  lazy val reporter = new Reporter {
-
-    def report(result: CurveData, persistor: Persistor) {
-      val stream = new PrintWriter(new BufferedWriter(new FileWriter(out5Nodes, true)))
-      // output context
-      println(s"::Benchmark ${result.context.scope}::")
-      //stream.println(s"::Benchmark ${result.context.scope}::")
-      for ((key, value) <- result.context.properties.filterKeys(Context.machine.properties.keySet.contains).toSeq.sortBy(_._1)) {
-        println(s"$key: $value")
-      }
-
-      // output measurements
-      for (measurement <- result.measurements) {
-        println(s"${measurement.params}: ${measurement.time}")
-        stream.println(s"${measurement.time}")
-      }
-
-      println("")
-      stream.close()
-    }
-
-    def report(result: Tree[CurveData], persistor: Persistor) = true
-
-  }
-
-  lazy val persistor = Persistor.None
-
-  val runs = Gen.single("runs")(1)
+  val outputFile = Constant.out5Nodes
+  val outputFormat = s"""
+  output format for 5 inode benchmark in $outputFile:
+  - delite-optimized
+  - delite-unoptized
+  - yinyang
+  """
 
   var previous: scala.collection.mutable.ArrayBuffer[Any] = null
 

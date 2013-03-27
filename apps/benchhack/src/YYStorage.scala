@@ -43,11 +43,11 @@ object YYStorage {
     val guard = fetchGuard(id, values, refs, recompile)
 
     if (guard.values != values && guard.refs.map(_.apply()) != refs) {
-      println("recompile :(")
+      //println("recompile :(")
       guard.function = recompile()
     }
     else {
-      println(s"retrieve :) ${values.size}")
+      //println(s"retrieve :) ${values.size}")
     }
 
     guard.function.asInstanceOf[Ret]

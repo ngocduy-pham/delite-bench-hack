@@ -1,7 +1,8 @@
-import ppl.dsl.optigraph._
-class bench_delite_LOC500 extends OptiGraphApplicationRunner {
-  def main() = {
 
+    import ppl.dsl.optigraph._
+    class bench_delite_LOC500 extends OptiGraphApplicationRunner {
+      def main() = {
+  
     println(FreeValueContainer.s1 + FreeValueContainer.s2)
     val g0 = Graph()
     val n1 = g0.AddNode
@@ -12,7 +13,7 @@ class bench_delite_LOC500 extends OptiGraphApplicationRunner {
     val e1 = g0.AddEdge(n1, n2)
     val n3 = g0.AddNode
     g0.AddEdge(n2, n3)
-
+  
     println(FreeValueContainer.s6 + FreeValueContainer.s7)
     val g5 = Graph()
     val n6 = g5.AddNode
@@ -23,7 +24,7 @@ class bench_delite_LOC500 extends OptiGraphApplicationRunner {
     val e6 = g5.AddEdge(n6, n7)
     val n8 = g5.AddNode
     g5.AddEdge(n7, n8)
-
+  
     println(FreeValueContainer.s11 + FreeValueContainer.s12)
     val g10 = Graph()
     val n11 = g10.AddNode
@@ -34,7 +35,7 @@ class bench_delite_LOC500 extends OptiGraphApplicationRunner {
     val e11 = g10.AddEdge(n11, n12)
     val n13 = g10.AddNode
     g10.AddEdge(n12, n13)
-
+  
     println(FreeValueContainer.s16 + FreeValueContainer.s17)
     val g15 = Graph()
     val n16 = g15.AddNode
@@ -45,7 +46,7 @@ class bench_delite_LOC500 extends OptiGraphApplicationRunner {
     val e16 = g15.AddEdge(n16, n17)
     val n18 = g15.AddNode
     g15.AddEdge(n17, n18)
-
+  
     println(FreeValueContainer.s21 + FreeValueContainer.s22)
     val g20 = Graph()
     val n21 = g20.AddNode
@@ -56,7 +57,7 @@ class bench_delite_LOC500 extends OptiGraphApplicationRunner {
     val e21 = g20.AddEdge(n21, n22)
     val n23 = g20.AddNode
     g20.AddEdge(n22, n23)
-
+  
     println(FreeValueContainer.s26 + FreeValueContainer.s27)
     val g25 = Graph()
     val n26 = g25.AddNode
@@ -67,7 +68,7 @@ class bench_delite_LOC500 extends OptiGraphApplicationRunner {
     val e26 = g25.AddEdge(n26, n27)
     val n28 = g25.AddNode
     g25.AddEdge(n27, n28)
-
+  
     println(FreeValueContainer.s31 + FreeValueContainer.s32)
     val g30 = Graph()
     val n31 = g30.AddNode
@@ -78,7 +79,7 @@ class bench_delite_LOC500 extends OptiGraphApplicationRunner {
     val e31 = g30.AddEdge(n31, n32)
     val n33 = g30.AddNode
     g30.AddEdge(n32, n33)
-
+  
     println(FreeValueContainer.s36 + FreeValueContainer.s37)
     val g35 = Graph()
     val n36 = g35.AddNode
@@ -89,7 +90,7 @@ class bench_delite_LOC500 extends OptiGraphApplicationRunner {
     val e36 = g35.AddEdge(n36, n37)
     val n38 = g35.AddNode
     g35.AddEdge(n37, n38)
-
+  
     println(FreeValueContainer.s41 + FreeValueContainer.s42)
     val g40 = Graph()
     val n41 = g40.AddNode
@@ -100,7 +101,7 @@ class bench_delite_LOC500 extends OptiGraphApplicationRunner {
     val e41 = g40.AddEdge(n41, n42)
     val n43 = g40.AddNode
     g40.AddEdge(n42, n43)
-
+  
     println(FreeValueContainer.s46 + FreeValueContainer.s47)
     val g45 = Graph()
     val n46 = g45.AddNode
@@ -111,7 +112,7 @@ class bench_delite_LOC500 extends OptiGraphApplicationRunner {
     val e46 = g45.AddEdge(n46, n47)
     val n48 = g45.AddNode
     g45.AddEdge(n47, n48)
-
+  
     println(FreeValueContainer.s51 + FreeValueContainer.s52)
     val g50 = Graph()
     val n51 = g50.AddNode
@@ -122,7 +123,7 @@ class bench_delite_LOC500 extends OptiGraphApplicationRunner {
     val e51 = g50.AddEdge(n51, n52)
     val n53 = g50.AddNode
     g50.AddEdge(n52, n53)
-
+  
     println(FreeValueContainer.s56 + FreeValueContainer.s57)
     val g55 = Graph()
     val n56 = g55.AddNode
@@ -133,7 +134,7 @@ class bench_delite_LOC500 extends OptiGraphApplicationRunner {
     val e56 = g55.AddEdge(n56, n57)
     val n58 = g55.AddNode
     g55.AddEdge(n57, n58)
-
+  
     println(FreeValueContainer.s61 + FreeValueContainer.s62)
     val g60 = Graph()
     val n61 = g60.AddNode
@@ -144,7 +145,7 @@ class bench_delite_LOC500 extends OptiGraphApplicationRunner {
     val e61 = g60.AddEdge(n61, n62)
     val n63 = g60.AddNode
     g60.AddEdge(n62, n63)
-
+  
     println(FreeValueContainer.s66 + FreeValueContainer.s67)
     val g65 = Graph()
     val n66 = g65.AddNode
@@ -155,7 +156,7 @@ class bench_delite_LOC500 extends OptiGraphApplicationRunner {
     val e66 = g65.AddEdge(n66, n67)
     val n68 = g65.AddNode
     g65.AddEdge(n67, n68)
-
+  
     println(FreeValueContainer.s71 + FreeValueContainer.s72)
     val g70 = Graph()
     val n71 = g70.AddNode
@@ -166,7 +167,7 @@ class bench_delite_LOC500 extends OptiGraphApplicationRunner {
     val e71 = g70.AddEdge(n71, n72)
     val n73 = g70.AddNode
     g70.AddEdge(n72, n73)
-
+  
     println(FreeValueContainer.s76 + FreeValueContainer.s77)
     val g75 = Graph()
     val n76 = g75.AddNode
@@ -177,7 +178,7 @@ class bench_delite_LOC500 extends OptiGraphApplicationRunner {
     val e76 = g75.AddEdge(n76, n77)
     val n78 = g75.AddNode
     g75.AddEdge(n77, n78)
-
+  
     println(FreeValueContainer.s81 + FreeValueContainer.s82)
     val g80 = Graph()
     val n81 = g80.AddNode
@@ -188,7 +189,7 @@ class bench_delite_LOC500 extends OptiGraphApplicationRunner {
     val e81 = g80.AddEdge(n81, n82)
     val n83 = g80.AddNode
     g80.AddEdge(n82, n83)
-
+  
     println(FreeValueContainer.s86 + FreeValueContainer.s87)
     val g85 = Graph()
     val n86 = g85.AddNode
@@ -199,7 +200,7 @@ class bench_delite_LOC500 extends OptiGraphApplicationRunner {
     val e86 = g85.AddEdge(n86, n87)
     val n88 = g85.AddNode
     g85.AddEdge(n87, n88)
-
+  
     println(FreeValueContainer.s91 + FreeValueContainer.s92)
     val g90 = Graph()
     val n91 = g90.AddNode
@@ -210,7 +211,7 @@ class bench_delite_LOC500 extends OptiGraphApplicationRunner {
     val e91 = g90.AddEdge(n91, n92)
     val n93 = g90.AddNode
     g90.AddEdge(n92, n93)
-
+  
     println(FreeValueContainer.s96 + FreeValueContainer.s97)
     val g95 = Graph()
     val n96 = g95.AddNode
@@ -221,7 +222,7 @@ class bench_delite_LOC500 extends OptiGraphApplicationRunner {
     val e96 = g95.AddEdge(n96, n97)
     val n98 = g95.AddNode
     g95.AddEdge(n97, n98)
-
+  
     println(FreeValueContainer.s101 + FreeValueContainer.s102)
     val g100 = Graph()
     val n101 = g100.AddNode
@@ -232,7 +233,7 @@ class bench_delite_LOC500 extends OptiGraphApplicationRunner {
     val e101 = g100.AddEdge(n101, n102)
     val n103 = g100.AddNode
     g100.AddEdge(n102, n103)
-
+  
     println(FreeValueContainer.s106 + FreeValueContainer.s107)
     val g105 = Graph()
     val n106 = g105.AddNode
@@ -243,7 +244,7 @@ class bench_delite_LOC500 extends OptiGraphApplicationRunner {
     val e106 = g105.AddEdge(n106, n107)
     val n108 = g105.AddNode
     g105.AddEdge(n107, n108)
-
+  
     println(FreeValueContainer.s111 + FreeValueContainer.s112)
     val g110 = Graph()
     val n111 = g110.AddNode
@@ -254,7 +255,7 @@ class bench_delite_LOC500 extends OptiGraphApplicationRunner {
     val e111 = g110.AddEdge(n111, n112)
     val n113 = g110.AddNode
     g110.AddEdge(n112, n113)
-
+  
     println(FreeValueContainer.s116 + FreeValueContainer.s117)
     val g115 = Graph()
     val n116 = g115.AddNode
@@ -265,7 +266,7 @@ class bench_delite_LOC500 extends OptiGraphApplicationRunner {
     val e116 = g115.AddEdge(n116, n117)
     val n118 = g115.AddNode
     g115.AddEdge(n117, n118)
-
+  
     println(FreeValueContainer.s121 + FreeValueContainer.s122)
     val g120 = Graph()
     val n121 = g120.AddNode
@@ -276,7 +277,7 @@ class bench_delite_LOC500 extends OptiGraphApplicationRunner {
     val e121 = g120.AddEdge(n121, n122)
     val n123 = g120.AddNode
     g120.AddEdge(n122, n123)
-
+  
     println(FreeValueContainer.s126 + FreeValueContainer.s127)
     val g125 = Graph()
     val n126 = g125.AddNode
@@ -287,7 +288,7 @@ class bench_delite_LOC500 extends OptiGraphApplicationRunner {
     val e126 = g125.AddEdge(n126, n127)
     val n128 = g125.AddNode
     g125.AddEdge(n127, n128)
-
+  
     println(FreeValueContainer.s131 + FreeValueContainer.s132)
     val g130 = Graph()
     val n131 = g130.AddNode
@@ -298,7 +299,7 @@ class bench_delite_LOC500 extends OptiGraphApplicationRunner {
     val e131 = g130.AddEdge(n131, n132)
     val n133 = g130.AddNode
     g130.AddEdge(n132, n133)
-
+  
     println(FreeValueContainer.s136 + FreeValueContainer.s137)
     val g135 = Graph()
     val n136 = g135.AddNode
@@ -309,7 +310,7 @@ class bench_delite_LOC500 extends OptiGraphApplicationRunner {
     val e136 = g135.AddEdge(n136, n137)
     val n138 = g135.AddNode
     g135.AddEdge(n137, n138)
-
+  
     println(FreeValueContainer.s141 + FreeValueContainer.s142)
     val g140 = Graph()
     val n141 = g140.AddNode
@@ -320,7 +321,7 @@ class bench_delite_LOC500 extends OptiGraphApplicationRunner {
     val e141 = g140.AddEdge(n141, n142)
     val n143 = g140.AddNode
     g140.AddEdge(n142, n143)
-
+  
     println(FreeValueContainer.s146 + FreeValueContainer.s147)
     val g145 = Graph()
     val n146 = g145.AddNode
@@ -331,7 +332,7 @@ class bench_delite_LOC500 extends OptiGraphApplicationRunner {
     val e146 = g145.AddEdge(n146, n147)
     val n148 = g145.AddNode
     g145.AddEdge(n147, n148)
-
+  
     println(FreeValueContainer.s151 + FreeValueContainer.s152)
     val g150 = Graph()
     val n151 = g150.AddNode
@@ -342,7 +343,7 @@ class bench_delite_LOC500 extends OptiGraphApplicationRunner {
     val e151 = g150.AddEdge(n151, n152)
     val n153 = g150.AddNode
     g150.AddEdge(n152, n153)
-
+  
     println(FreeValueContainer.s156 + FreeValueContainer.s157)
     val g155 = Graph()
     val n156 = g155.AddNode
@@ -353,7 +354,7 @@ class bench_delite_LOC500 extends OptiGraphApplicationRunner {
     val e156 = g155.AddEdge(n156, n157)
     val n158 = g155.AddNode
     g155.AddEdge(n157, n158)
-
+  
     println(FreeValueContainer.s161 + FreeValueContainer.s162)
     val g160 = Graph()
     val n161 = g160.AddNode
@@ -364,7 +365,7 @@ class bench_delite_LOC500 extends OptiGraphApplicationRunner {
     val e161 = g160.AddEdge(n161, n162)
     val n163 = g160.AddNode
     g160.AddEdge(n162, n163)
-
+  
     println(FreeValueContainer.s166 + FreeValueContainer.s167)
     val g165 = Graph()
     val n166 = g165.AddNode
@@ -375,7 +376,7 @@ class bench_delite_LOC500 extends OptiGraphApplicationRunner {
     val e166 = g165.AddEdge(n166, n167)
     val n168 = g165.AddNode
     g165.AddEdge(n167, n168)
-
+  
     println(FreeValueContainer.s171 + FreeValueContainer.s172)
     val g170 = Graph()
     val n171 = g170.AddNode
@@ -386,7 +387,7 @@ class bench_delite_LOC500 extends OptiGraphApplicationRunner {
     val e171 = g170.AddEdge(n171, n172)
     val n173 = g170.AddNode
     g170.AddEdge(n172, n173)
-
+  
     println(FreeValueContainer.s176 + FreeValueContainer.s177)
     val g175 = Graph()
     val n176 = g175.AddNode
@@ -397,7 +398,7 @@ class bench_delite_LOC500 extends OptiGraphApplicationRunner {
     val e176 = g175.AddEdge(n176, n177)
     val n178 = g175.AddNode
     g175.AddEdge(n177, n178)
-
+  
     println(FreeValueContainer.s181 + FreeValueContainer.s182)
     val g180 = Graph()
     val n181 = g180.AddNode
@@ -408,7 +409,7 @@ class bench_delite_LOC500 extends OptiGraphApplicationRunner {
     val e181 = g180.AddEdge(n181, n182)
     val n183 = g180.AddNode
     g180.AddEdge(n182, n183)
-
+  
     println(FreeValueContainer.s186 + FreeValueContainer.s187)
     val g185 = Graph()
     val n186 = g185.AddNode
@@ -419,7 +420,7 @@ class bench_delite_LOC500 extends OptiGraphApplicationRunner {
     val e186 = g185.AddEdge(n186, n187)
     val n188 = g185.AddNode
     g185.AddEdge(n187, n188)
-
+  
     println(FreeValueContainer.s191 + FreeValueContainer.s192)
     val g190 = Graph()
     val n191 = g190.AddNode
@@ -430,7 +431,7 @@ class bench_delite_LOC500 extends OptiGraphApplicationRunner {
     val e191 = g190.AddEdge(n191, n192)
     val n193 = g190.AddNode
     g190.AddEdge(n192, n193)
-
+  
     println(FreeValueContainer.s196 + FreeValueContainer.s197)
     val g195 = Graph()
     val n196 = g195.AddNode
@@ -441,7 +442,7 @@ class bench_delite_LOC500 extends OptiGraphApplicationRunner {
     val e196 = g195.AddEdge(n196, n197)
     val n198 = g195.AddNode
     g195.AddEdge(n197, n198)
-
+  
     println(FreeValueContainer.s201 + FreeValueContainer.s202)
     val g200 = Graph()
     val n201 = g200.AddNode
@@ -452,7 +453,7 @@ class bench_delite_LOC500 extends OptiGraphApplicationRunner {
     val e201 = g200.AddEdge(n201, n202)
     val n203 = g200.AddNode
     g200.AddEdge(n202, n203)
-
+  
     println(FreeValueContainer.s206 + FreeValueContainer.s207)
     val g205 = Graph()
     val n206 = g205.AddNode
@@ -463,7 +464,7 @@ class bench_delite_LOC500 extends OptiGraphApplicationRunner {
     val e206 = g205.AddEdge(n206, n207)
     val n208 = g205.AddNode
     g205.AddEdge(n207, n208)
-
+  
     println(FreeValueContainer.s211 + FreeValueContainer.s212)
     val g210 = Graph()
     val n211 = g210.AddNode
@@ -474,7 +475,7 @@ class bench_delite_LOC500 extends OptiGraphApplicationRunner {
     val e211 = g210.AddEdge(n211, n212)
     val n213 = g210.AddNode
     g210.AddEdge(n212, n213)
-
+  
     println(FreeValueContainer.s216 + FreeValueContainer.s217)
     val g215 = Graph()
     val n216 = g215.AddNode
@@ -485,7 +486,7 @@ class bench_delite_LOC500 extends OptiGraphApplicationRunner {
     val e216 = g215.AddEdge(n216, n217)
     val n218 = g215.AddNode
     g215.AddEdge(n217, n218)
-
+  
     println(FreeValueContainer.s221 + FreeValueContainer.s222)
     val g220 = Graph()
     val n221 = g220.AddNode
@@ -496,7 +497,7 @@ class bench_delite_LOC500 extends OptiGraphApplicationRunner {
     val e221 = g220.AddEdge(n221, n222)
     val n223 = g220.AddNode
     g220.AddEdge(n222, n223)
-
+  
     println(FreeValueContainer.s226 + FreeValueContainer.s227)
     val g225 = Graph()
     val n226 = g225.AddNode
@@ -507,7 +508,7 @@ class bench_delite_LOC500 extends OptiGraphApplicationRunner {
     val e226 = g225.AddEdge(n226, n227)
     val n228 = g225.AddNode
     g225.AddEdge(n227, n228)
-
+  
     println(FreeValueContainer.s231 + FreeValueContainer.s232)
     val g230 = Graph()
     val n231 = g230.AddNode
@@ -518,7 +519,7 @@ class bench_delite_LOC500 extends OptiGraphApplicationRunner {
     val e231 = g230.AddEdge(n231, n232)
     val n233 = g230.AddNode
     g230.AddEdge(n232, n233)
-
+  
     println(FreeValueContainer.s236 + FreeValueContainer.s237)
     val g235 = Graph()
     val n236 = g235.AddNode
@@ -529,7 +530,7 @@ class bench_delite_LOC500 extends OptiGraphApplicationRunner {
     val e236 = g235.AddEdge(n236, n237)
     val n238 = g235.AddNode
     g235.AddEdge(n237, n238)
-
+  
     println(FreeValueContainer.s241 + FreeValueContainer.s242)
     val g240 = Graph()
     val n241 = g240.AddNode
@@ -540,7 +541,7 @@ class bench_delite_LOC500 extends OptiGraphApplicationRunner {
     val e241 = g240.AddEdge(n241, n242)
     val n243 = g240.AddNode
     g240.AddEdge(n242, n243)
-
+  
     println(FreeValueContainer.s246 + FreeValueContainer.s247)
     val g245 = Graph()
     val n246 = g245.AddNode
@@ -551,7 +552,7 @@ class bench_delite_LOC500 extends OptiGraphApplicationRunner {
     val e246 = g245.AddEdge(n246, n247)
     val n248 = g245.AddNode
     g245.AddEdge(n247, n248)
-
-  }
-}
+  
+      }
+    }
   
