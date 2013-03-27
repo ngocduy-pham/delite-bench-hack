@@ -1,3 +1,0 @@
-object RealMPDERunner {
-  def main() {}
-}

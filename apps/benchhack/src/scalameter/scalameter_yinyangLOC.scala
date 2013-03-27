@@ -4,7 +4,6 @@ import org.scalameter.CurveData
 import org.scalameter.Context
 import org.scalameter.Executor.Measurer
 import org.scalameter.utils.Tree
-import ppl.dsl.optigraph._
 
 object scalameter_yinyangLOC extends PerformanceTest {
 
@@ -70,5 +69,3 @@ object scalameter_yinyangLOC extends PerformanceTest {
     }
 
 }
-
-  
